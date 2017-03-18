@@ -3,6 +3,18 @@
   <groupId>JieDing</groupId>
   <artifactId>DataStructureAndAlgorithm</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <properties>
+  	<!-- Common libs -->
+  	<zkclient_version>0.1</zkclient_version>
+  	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  <dependencies>
+  	<dependency>
+		<groupId>com.github.sgroschupf</groupId>
+		<artifactId>zkclient</artifactId>
+		<version>${zkclient_version}</version>
+  	</dependency>
+  </dependencies>
   <build>
   	<plugins>  
         <plugin>  
@@ -30,4 +42,6 @@
         </plugin>  
     </plugins>  
   </build>
+  
+  
 </project>
