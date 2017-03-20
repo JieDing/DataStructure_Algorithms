@@ -46,14 +46,14 @@ public interface ListADT<E>{
 	int size();
 	
 	/** 
-	* Returns true if this list contains the specified element
-	*/
-	boolean contains(E e);
-	
-	/** 
 	* Returns true if this list contains no elements.
 	*/
 	boolean isEmpty();
+	
+	/** 
+	* Returns true if this list contains the specified element
+	*/
+	boolean contains(E e);
 	
 	/** 
 	* Returns the element at the specified position in this list

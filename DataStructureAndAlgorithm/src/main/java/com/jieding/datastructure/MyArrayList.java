@@ -37,6 +37,7 @@ public class MyArrayList<E> implements ListADT<E>{
 	
 	public boolean contains(E e) {
 		// TODO Auto-generated method stub
+		if(isEmpty()) return false;
 		if(e == null){
 			for(int i=0; i<size(); i++){
 				if(elements[i] == null)
