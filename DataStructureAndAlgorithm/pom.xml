@@ -15,8 +15,8 @@
 		<version>${zkclient_version}</version>
   	</dependency>
   </dependencies>
-  <build>
-  	<plugins>  
+	<build>
+   	<plugins>  
         <plugin>  
             <groupId>org.apache.maven.plugins</groupId>  
             <artifactId>maven-eclipse-plugin</artifactId>  
@@ -41,7 +41,6 @@
             <version>2.7</version>  
         </plugin>  
     </plugins>  
-  </build>
-  
+  </build>  
   
 </project>

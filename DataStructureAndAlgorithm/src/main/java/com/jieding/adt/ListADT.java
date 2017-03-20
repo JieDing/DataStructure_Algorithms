@@ -17,10 +17,10 @@ package com.jieding.adt;
 *   <%- general operation to the list%>
 * 	void clear()	Removes all of the elements from this list
 *   int size() Returns the number of elements in this list
-* 	boolean contains(E e)  Returns true if this list contains the specified element
 *   boolean isEmpty() Returns true if this list contains no elements.
 *   
 *   <%- obtain element or index%>
+* 	boolean contains(E e)  Returns true if this list contains the specified element
 *   E get(int index) Returns the element at the specified position in this list
 *   int indexOf(E e) Returns the index of the first occurrence of the specified element in this list, or -1 if this list does not contain the element.
 * 	
