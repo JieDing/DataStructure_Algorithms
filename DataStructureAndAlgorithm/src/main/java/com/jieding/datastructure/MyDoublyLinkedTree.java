@@ -101,11 +101,13 @@ public class MyDoublyLinkedTree<E> implements TreeADT<E> {
 				
 		}else{
 			Node newNode = new Node(parent,null,null,element);
-			Node n = parent.firstChild;
-			while(n!=null){
-				n = n.nextSibling;
+			if(parent.firstChild!=null){
+				Node n = null;
+				for(n =parent.firstChild;n.nextSibling!=null; )
+					n = n.nextSibling;
+	
+				n.nextSibling = newNode;
 			}
-			n.nextSibling = newNode;
 			size++;
 			return true;
 		}
@@ -117,14 +119,20 @@ public class MyDoublyLinkedTree<E> implements TreeADT<E> {
 	private Node findNodeByPath(String path){
 		
 		Node n = rootNode;
+		
 		if(path.equals("/"))
 			return null;
 		while(path.contains("/")){
 			
 			path = path.substring(path.indexOf("/")+1);
-			String nodeName = path.substring(0,path.indexOf("/"));
+			String nodeName = null;
+			if(path.contains("/"))
+				nodeName= path.substring(0,path.indexOf("/"));
+			else nodeName = path;
+			
 			n = traverseNodesByLevel(n,nodeName);
-			n = n.firstChild;				
+			if(path.contains("/"))
+				n = n.firstChild;				
 		}
 		
 		return n;
@@ -132,7 +140,9 @@ public class MyDoublyLinkedTree<E> implements TreeADT<E> {
 	private Node traverseNodesByLevel(Node n, String nodeName) {
 		// TODO Auto-generated method stub
 		while(n!=null){
-			if(n.nodeName.equals(nodeName))
+			System.out.println("nodeName "+nodeName);
+			System.out.println("n.elemet "+n.element.toString());
+			if(n.element.toString().equals(nodeName))
 				return n;
 			n = n.nextSibling;
 		}
@@ -150,16 +160,20 @@ public class MyDoublyLinkedTree<E> implements TreeADT<E> {
 		// TODO Auto-generated method stub
 		
 	}
-	public void printNodes(Node n){
+	public void printAllNodes(){
+		printNodes(rootNode);
+	}
+	private void printNodes(Node n){
 		if(n != null){
 			for(int i=0;i<tab;i++)
 				System.out.print("\t");
-			System.out.println(n.nodeName);
+			System.out.println(n.element.toString());
 			Node child = n.firstChild;
 			Node sibling = n.nextSibling;
 			tab++;
 			printNodes(child);
 			printNodes(sibling);
+			
 			//System.out.println(n.nodeName);
 		}
 	}
@@ -167,14 +181,17 @@ public class MyDoublyLinkedTree<E> implements TreeADT<E> {
 		Node parent;
 		Node firstChild;
 		Node nextSibling;
-		String nodeName;
 		E element;
+		public E getElement() {
+			return element;
+		}
+		
 		Node(Node parent, Node firstChild, Node nextSibling, E element){
 			this.parent = parent;
 			this.firstChild = firstChild;
 			this.nextSibling = nextSibling;
 			this.element = element;
-			this.nodeName = element.toString();
+			
 		}
 	}
 }
