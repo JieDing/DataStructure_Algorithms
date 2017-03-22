@@ -21,7 +21,7 @@ public class MyDoublyLinkedQueue<E> implements QueueADT<E> {
 			Node next = n.next;
 			n.prev = null;
 			n.next = null;
-			n.value = null;
+			n.element = null;
 			n = next;
 		}
 		headNode = null;
@@ -44,7 +44,7 @@ public class MyDoublyLinkedQueue<E> implements QueueADT<E> {
 		if(isEmpty()) return false;
 		if(e==null) throw new IllegalArgumentException("please enter non-null element");
 		for(Node n=headNode.next; n.next!=null; n=n.next){
-			if(e.equals(n.value))
+			if(e.equals(n.element))
 				return true;
 		}
 		return false;
@@ -53,7 +53,7 @@ public class MyDoublyLinkedQueue<E> implements QueueADT<E> {
 	public E peek() {
 		// TODO Auto-generated method stub
 		if(isEmpty()) return null;
-		return headNode.next.value;
+		return headNode.next.element;
 	}
 	/**
 	 * return 1-based index of the specific element
@@ -65,7 +65,7 @@ public class MyDoublyLinkedQueue<E> implements QueueADT<E> {
 		if(isEmpty()) return 0;
 		int i=1;
 		for(Node n=headNode.next; n.next!=null; n=n.next, i++){
-			if(e.equals(n.value))
+			if(e.equals(n.element))
 				return i;
 		}
 		return -1;
@@ -84,20 +84,20 @@ public class MyDoublyLinkedQueue<E> implements QueueADT<E> {
 		// TODO Auto-generated method stub
 		if(isEmpty()) return null;
 		Node firstNode = headNode.next;
-		E value = firstNode.value;
+		E element = firstNode.element;
 		firstNode.next.prev = headNode;
 		headNode.next = firstNode.next;
 		size--;
-		return value;
+		return element;
 	}
 	class Node{
 		Node prev;
 		Node next;
-		E value;
-		Node (Node prev, Node next, E value){
+		E element;
+		Node (Node prev, Node next, E element){
 			this.prev = prev;
 			this.next = next;
-			this.value = value;
+			this.element = element;
 		}
 	}
 }

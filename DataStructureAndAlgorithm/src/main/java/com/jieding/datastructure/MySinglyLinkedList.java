@@ -20,7 +20,7 @@ public class MySinglyLinkedList<E> implements ListADT<E> {
 		for(Node node = headNode; node.next!=null;){
 			Node nextNode = node.next;
 			node.next = null;
-			node.value = null;
+			node.element = null;
 			node = nextNode;
 		}
 		headNode = null;
@@ -43,13 +43,13 @@ public class MySinglyLinkedList<E> implements ListADT<E> {
 		if(isEmpty()) return false;
 		if(e ==null){
 			for(Node n = headNode.next; n.next!=null; n = n.next){
-				if(n.value == null)
+				if(n.element == null)
 					return true;
 			}
 			return false;
 		}else{
 			for(Node n = headNode.next; n.next!=null; n = n.next){
-				if(e.equals(n.value))
+				if(e.equals(n.element))
 					return true;
 			}
 			return false;
@@ -63,7 +63,7 @@ public class MySinglyLinkedList<E> implements ListADT<E> {
 		// TODO Auto-generated method stub
 		if(isEmpty()) return null;
 		checkListBounds(index);
-		return fastGetNodeByIndex(index).value;
+		return fastGetNodeByIndex(index).element;
 	}
 	private Node fastGetNodeByIndex(int index){
 		
@@ -87,14 +87,14 @@ public class MySinglyLinkedList<E> implements ListADT<E> {
 		if(e ==null){
 			int i=1;
 			for(Node n = headNode.next; n.next!=null; n = n.next, i++){
-				if(n.value == null)
+				if(n.element == null)
 					return i;
 			}
 			return -1;
 		}else{
 			int i=1;
 			for(Node n = headNode.next; n.next!=null; n = n.next, i++){
-				if(e.equals(n.value))
+				if(e.equals(n.element))
 					return i;
 			}
 			return -1;
@@ -128,14 +128,14 @@ public class MySinglyLinkedList<E> implements ListADT<E> {
 		// TODO Auto-generated method stub
 		checkListBounds(index);
 		Node n = fastGetNodeByIndex(index);
-		E value = n.value;
+		E element = n.element;
 		Node prev = fastGetNodeByIndex(index-1);
 		prev.next = n.next;
 		n.next = null;
-		n.value = null;
+		n.element = null;
 		n =null;
 		size--;
-		return value;
+		return element;
 	}
 
 	public boolean remove(E e) {
@@ -144,11 +144,11 @@ public class MySinglyLinkedList<E> implements ListADT<E> {
 		if(e ==null){
 			int i=1;
 			for(Node n = headNode.next; n.next!=null; n = n.next, i++){
-				if(n.value == null){
+				if(n.element == null){
 					Node prev = fastGetNodeByIndex(i-1);
 					prev.next = n.next;
 					n.next = null;
-					n.value = null;
+					n.element = null;
 					n =null;
 					size--;
 					return true;
@@ -158,11 +158,11 @@ public class MySinglyLinkedList<E> implements ListADT<E> {
 		}else{
 			int i=1;
 			for(Node n = headNode.next; n.next!=null; n = n.next, i++){
-				if(e.equals(n.value)){
+				if(e.equals(n.element)){
 					Node prev = fastGetNodeByIndex(i-1);
 					prev.next = n.next;
 					n.next = null;
-					n.value = null;
+					n.element = null;
 					n =null;
 					size--;
 					return true;
@@ -173,18 +173,18 @@ public class MySinglyLinkedList<E> implements ListADT<E> {
 		
 	}
 
-	public void set(int index, E newValue) {
+	public void set(int index, E newElement) {
 		// TODO Auto-generated method stub
 		checkListBounds(index);
-		fastGetNodeByIndex(index).value = newValue;
+		fastGetNodeByIndex(index).element = newElement;
 	}
 	
 	class Node{
 		Node next;
-		E value;
-		Node(Node next, E value){
+		E element;
+		Node(Node next, E element){
 			this.next = next;
-			this.value = value;
+			this.element = element;
 		}
 	}
 	

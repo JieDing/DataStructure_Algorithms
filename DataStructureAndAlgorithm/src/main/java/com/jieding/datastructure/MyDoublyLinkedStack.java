@@ -22,7 +22,7 @@ public class MyDoublyLinkedStack<E> implements StackADT<E> {
 			Node next= n.next;
 			n.prev = null;
 			n.next = null;
-			n.value = null;
+			n.element = null;
 			n = next;
 		}
 		headNode = null;
@@ -45,13 +45,13 @@ public class MyDoublyLinkedStack<E> implements StackADT<E> {
 		if(isEmpty()) return false;
 		if(e == null){
 			for(Node n = headNode.next; n.next !=null; n=n.next){
-				if(n.value == null)
+				if(n.element == null)
 					return true;
 			}
 			return false;
 		}else{
 			for(Node n = headNode.next; n.next !=null; n= n.next){
-				if(e.equals(n.value))
+				if(e.equals(n.element))
 					return true;
 			}
 			return false;
@@ -61,7 +61,7 @@ public class MyDoublyLinkedStack<E> implements StackADT<E> {
 	public E peek() {
 		// TODO Auto-generated method stub
 		if(isEmpty()) return null;
-		return tailNode.prev.value;
+		return tailNode.prev.element;
 	}
 	/**
 	 * Returns the 1-based position where an object is on this stack.
@@ -74,14 +74,14 @@ public class MyDoublyLinkedStack<E> implements StackADT<E> {
 		if(e == null){
 			int i=1;
 			for(Node n = headNode.next; n.next!=null; n= n.next,i++){
-				if(n.value == null)
+				if(n.element == null)
 					return i;
 			}
 			return -1;
 		}else{
 			int i=1;
 			for(Node n = headNode.next; n.next!=null; n=n.next,i++){
-				if(e.equals(n.value))
+				if(e.equals(n.element))
 					return i;
 			}
 			return -1;
@@ -91,18 +91,18 @@ public class MyDoublyLinkedStack<E> implements StackADT<E> {
 	public E pop() {
 		if(isEmpty()) return null;
 		Node n = tailNode.prev;
-		E value = n.value;	
+		E element = n.element;	
 		n.prev.next = tailNode;
 		tailNode.prev = n.prev;
 		
 		n.prev = null;
 		n.next = null;
-		n.value = null;
+		n.element = null;
 		n = null;
 		
 		size--;
 		
-		return value;
+		return element;
 	}
 
 	public E push(E item) {
@@ -116,11 +116,11 @@ public class MyDoublyLinkedStack<E> implements StackADT<E> {
 	class Node{
 		Node prev;
 		Node next;
-		E value;
-		Node(Node prev, Node next, E value){
+		E element;
+		Node(Node prev, Node next, E element){
 			this.prev = prev;
 			this.next = next;
-			this.value = value;
+			this.element = element;
 		}
 	}
 

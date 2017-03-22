@@ -29,7 +29,7 @@ package com.jieding.adt;
 * 	void add(int index, E element) Inserts the specified element at the specified position in this list
 * 	E remove(int index) Removes the element at the specified position in this list
 * 	boolean remove(E e) Removes the first occurrence of the specified element from this list, if it is present
-* 	void set(int index, E newValue) Replaces the element at the specified position in this list with the specified element
+* 	void set(int index, E newElement) Replaces the element at the specified position in this list with the specified element
 * 	
 * }
 */
@@ -88,5 +88,5 @@ public interface ListADT<E>{
 	/**
 	 * Replaces the element at the specified position in this list with the specified element
 	 */
-	void set(int index, E newValue);
+	void set(int index, E newElement);
 }
