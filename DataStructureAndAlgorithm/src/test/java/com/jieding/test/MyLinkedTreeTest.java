@@ -11,9 +11,10 @@ public class MyLinkedTreeTest extends TestCase {
 	}
 
 	public void testClear() {
-		String path = "/abc/cde/fff";
+		String path = "/abc/cde/fff/";
 		path = path.substring(path.indexOf("/")+1);
-		path = path.substring(path.indexOf("/")+1);
+		path = path.substring(path.indexOf("/"));
+		path = path.substring(0,path.length()-1);
 		System.out.println("\t"+path.toString());
 		//String nodeName = path.substring(0,path.indexOf("/"));
 		//System.out.println(nodeName);
@@ -55,8 +56,17 @@ public class MyLinkedTreeTest extends TestCase {
 		MyDoublyLinkedTree<String> tree = new MyDoublyLinkedTree<String>();
 		tree.insert("/", "root");
 		tree.insert("/root", "aa");
-		tree.insert("/root/aa", "ab");
+		tree.insert("/root/aa", "wwww");
+		tree.insert("/root", "ab");
+		tree.insert("/root", "ac");
+		tree.insert("/root/ac", "ww");
+		tree.insert("/root/ac", "wwe");
+		tree.insert("/root/ac/ww", "dasdasad");
+		tree.insert("/root", "ad");
+		tree.insert("/", "dingjie");
+		tree.remove("/dingjie/aa");
 		tree.printAllNodes();
+		
 	}
 
 	public void testRemove() {

@@ -15,10 +15,8 @@ package com.jieding.adt;
  *  void clear() Removes all of the elements from the tree
  *  int size() Returns the number of elements of the tree
  *  boolean isEmpty() Returns true if the tree is empty
- *  int height() Returns the height of the tree
  *  
  *  <%- obtain element or orders%>
- *  boolean contains(E e)  Returns true if the tree contains the specified element
  *  String preOrder() Return the tree elements in the pre-order
  *  String inOrder() Return the tree elements in the in-order
  *  String postOrder() Return the tree elements in the post-order
@@ -36,30 +34,11 @@ public interface TreeADT<E> {
 	void clear();
 	
 	/**
-	 * Returns the number of elements of the tree
-	 * 
-	 */
-	int size();
-	
-	/**
 	 * Returns true if the tree is empty
 	 * 
 	 */
 	boolean isEmpty();
-	
-	/**
-	 * Returns the height of the tree
-	 * @return
-	 */
-	int height();
-	
-	/**
-	 * Returns true if the tree contains the specified element
-	 * @param e
-	 * @return
-	 */
-	boolean contains(E e);
-	
+
 	/**
 	 * Return the tree elements in the pre-order
 	 * @return
@@ -101,9 +80,11 @@ public interface TreeADT<E> {
 	boolean insert(String absPath, E element);
 	
 	/**
-	 * remvoe a specific element from the tree
+	 * remvoe a specific element from the tree.
+	 * 		if the node is a leaf node, directly removes it.
+	 * 		otherwise, the first child of the node will take its position.
 	 * return null if the element is not existed
 	 * @param e
 	 */
-	void remove(String absPath, E element);
+	E remove(String absPath);
 }
